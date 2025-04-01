@@ -6,7 +6,7 @@ export default function Header() {
             <header>
                 <nav className="navbar navbar-expand-sm navbar-light bg-warning">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#">Giallo Booleano</a>
+                        <NavLink className="navbar-brand" to="/">Giallo Booleano</NavLink>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
                             aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
