@@ -50,7 +50,7 @@ export default function Blog() {
                                             </div>
                                             <button
                                                 className="btn btn-danger mt-5" onClick={() => handleDelete(post.slug)}>
-                                                <i className="bi bi-trash"></i>
+                                                <i className="bi bi-trash"> Elimina Post</i>
                                             </button>
                                         </div>
                                     </div>

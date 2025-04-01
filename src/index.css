@@ -15,3 +15,23 @@ body {
 .best-receips {
   background-color: rgb(198, 197, 197);
 }
+
+.btn-warning {
+  font-size: 12px;
+  border-radius: 24px;
+}
+
+.tronca {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.tags {
+  height: 60px;
+}
+
+.post-title {
+  height: 80px;
+}
