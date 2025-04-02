@@ -44,7 +44,7 @@ export default function Blog() {
                                         <h3 className='post-title'>{post.title}</h3>
                                         <p className='tronca'>{post.content}</p>
                                         <div className="container">
-                                            <div className="tags">
+                                            <div className="tags my-5">
                                                 {post.tags.map((tag, index) => (
                                                     <button key={`tag-${index}`} className=' tag-button btn btn-warning m-1'>{tag}</button>
                                                 ))}

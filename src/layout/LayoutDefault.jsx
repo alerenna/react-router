@@ -7,9 +7,12 @@ export default function DefaultLayout() {
     return (
 
         <>
-            <Header />
-            <Outlet />
-            <Footer />
+            <div className="wrapper">
+                <Header />
+                <Outlet />
+                <Footer />
+            </div>
+
         </>
 
 
