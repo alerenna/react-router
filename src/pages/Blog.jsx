@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Blog() {
     const [posts, setPosts] = useState([])
@@ -45,13 +46,21 @@ export default function Blog() {
                                         <div className="container">
                                             <div className="tags">
                                                 {post.tags.map((tag, index) => (
-                                                    <button key={`tag-${index}`} className='btn btn-warning m-1'>{tag}</button>
+                                                    <button key={`tag-${index}`} className=' tag-button btn btn-warning m-1'>{tag}</button>
                                                 ))}
                                             </div>
-                                            <button
-                                                className="btn btn-danger mt-5" onClick={() => handleDelete(post.slug)}>
-                                                <i className="bi bi-trash"> Elimina Post</i>
-                                            </button>
+
+                                            <div className='container d-flex gap-3 justify-content-center'>
+                                                <button
+                                                    className="btn btn-danger mt-5" onClick={() => handleDelete(post.slug)}>
+                                                    <i className="bi bi-trash"> Elimina Post</i>
+                                                </button>
+
+                                                <Link className='btn btn-warning mt-5' to={post.slug}>
+                                                    Vai al post
+                                                </Link>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
