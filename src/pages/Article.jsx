@@ -1,20 +1,49 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+
 export default function Article() {
+    const [article, setArticle] = useState(null)
+
+    const { slug } = useParams()
+    console.log(slug);
+
+
+
+
+    useEffect(() => {
+        fetch(`http://localhost:3003/api/v1/posts/${slug}`)
+            .then(res => res.json())
+            .then(data => {
+                setArticle(data)
+            })
+            .catch(err => {
+                console.log(err);
+
+            })
+    }, [])
+
 
     return (
-        <div className="p-5 mb-4 bg-light rounded-3">
-            <div className="container-fluid py-5">
-                <img
-                    src="https://via.placeholder.com/800x400"
-                    alt="Recipe"
-                    className="img-fluid rounded mb-4"
-                />
-                <h1 className="display-5 fw-bold">Recipe Title</h1>
-                <p className="col-md-8 fs-4">
-                    This is a brief description of the recipe. It provides an overview of the dish, its flavors, and why it's worth trying.
-                </p>
-            </div>
-        </div>
+        <>
+            <main>
+                {
+                    !article ? ('Loading...')
+                        : (
+                            <>
+                                <div style={{ minHeight: '30vh', backgroundImage: `url(http://localhost:3003/images/${article.image})` }}></div>
+                                <section className="article">
+                                    <div className="container">
+                                        <h1>{article.title}</h1>
+                                        <p>{article.content}</p>
+
+                                    </div>
+                                </section>
+                            </>
+                        )
+                }
+            </main>
+        </>
     );
-
-
 }
