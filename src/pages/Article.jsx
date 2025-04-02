@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Article() {
     const [article, setArticle] = useState(null)
+    const [posts, setPosts] = useState([])
     const navigate = useNavigate()
 
     const { slug } = useParams()
@@ -23,7 +24,15 @@ export default function Article() {
                 console.log(err);
 
             })
-    }, [])
+
+        fetch('http://localhost:3003/api/v1/posts/')
+            .then(res => res.json())
+            .then(data => setPosts(data))
+            .catch((err) => console.log(err))
+    }, [slug])
+
+    const currentIndex = posts.findIndex(post => post.slug === slug)
+    const nextPost = posts[currentIndex + 1]
 
 
     return (
@@ -38,9 +47,18 @@ export default function Article() {
                                     <div className="container">
                                         <h1 className="my-3">{article.title}</h1>
                                         <p>{article.content}</p>
-                                        <button className="btn btn-warning back-button my-5" onClick={() => navigate(-1)}>
-                                            <i className="bi bi-backspace"></i> Torna indietro
-                                        </button>
+                                        <div className="pulsanti d-flex gap-5 justify-content-center">
+                                            <button className="btn btn-warning back-button my-5" onClick={() => navigate(-1)}>
+                                                <i className="bi bi-backspace"></i> Torna indietro
+                                            </button>
+
+                                            {nextPost && (
+                                                <button className="btn btn-warning my-5" onClick={() => navigate(`/blog/${nextPost.slug}`)}>
+                                                    <i class="bi bi-backspace-reverse"> Vai al prossimo articolo</i>
+                                                </button>
+                                            )}
+                                        </div>
+
                                     </div>
 
 
@@ -48,7 +66,7 @@ export default function Article() {
                             </>
                         )
                 }
-            </main>
+            </main >
         </>
     );
 }

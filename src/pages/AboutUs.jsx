@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom"
+
 export default function AboutUs() {
+
+    const navigate = useNavigate()
+
     return (
         <>
             <main>
@@ -33,7 +38,7 @@ export default function AboutUs() {
                             Diventa parte della nostra community e scopri come trasformare la cucina in un momento di relax,
                             anche nelle giornate più impegnative.
                         </p>
-                        <button className="btn btn-warning text-dark">Scopri di più</button>
+                        <button onClick={() => navigate('/')} className="btn btn-warning text-dark">Torna alla Homepage</button>
                     </div>
                 </div>
             </main>
